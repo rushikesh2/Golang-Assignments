@@ -21,9 +21,8 @@ type company struct {
 	} `json:"otherstuff"`
 }
 
-//Makeunmarshal This function can decode the JSON string using stuct
+//Makeunmarshal This function can decode the JSON string
 func Makeunmarshal(file []byte) {
-
 	var com company
 	err := json.Unmarshal(file, &com)
 	if err != nil {
