@@ -1,0 +1,19 @@
+[
+{
+"id": 1,
+"name": "Mr. Boss",
+"department": "",
+"designation": "Director"
+},
+{
+"id": 11,
+"name": "Irshad",
+"department": "IT",
+"designation": "Product Manager"
+},
+{
+"id": 12,
+"name": "Pankaj",
+"department": "IT",
+"designation": "Team Lead"
+}]
