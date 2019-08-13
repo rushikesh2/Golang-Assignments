@@ -19,7 +19,5 @@ func TestMakeunmarshal(t *testing.T) {
 
 	temp, _ := ioutil.ReadAll(datafile)
 	Makeunmarshal(temp)
-	// if err != nil {
-	// 	t.Error()
-	// }
+
 }
