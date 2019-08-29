@@ -77,6 +77,33 @@ func TestSourceHandler(t *testing.T) {
 	}
 }
 
-func TestSource(t *testing.T) {
-
+func TestSourceHandlerNegative(t *testing.T) {
+	testTable := []struct {
+		testCaseName string
+		url          string
+		status       int
+	}{
+		{
+			testCaseName: "TC1",
+			url:          "line=24&path=C:/Users/gs-2019/gocode/src/github.com/rushikesh2/GolangTraining/Gophercises/main.go",
+			status:       500,
+		},
+		{
+			testCaseName: "TC3",
+			url:          "line=24&path=/home/gslab/go/main.go",
+			status:       500,
+		},
+	}
+	for i := 0; i < len(testTable); i++ {
+		req, err := http.NewRequest("GET", "http://localhost:5000/debug?"+testTable[i].url, nil)
+		if err != nil {
+			t.Fatalf("could not create request: %v", err)
+		}
+		resr := httptest.NewRecorder()
+		sourceCodeHandler(resr, req)
+		res := resr.Result()
+		if res.StatusCode != testTable[i].status {
+			t.Errorf("Test case Number: %v Expected %v , Actual status %v", testTable[i].testCaseName, testTable[i].status, res.StatusCode)
+		}
+	}
 }
